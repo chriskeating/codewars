@@ -23,34 +23,44 @@ Can Vasya sell a ticket to each person and give the change if he initially has n
 
 Return YES, if Vasya can sell a ticket to each person and give the change. Otherwise return NO. */
 
-
 function tickets(peopleInLine){
   var cashInRegister = {
     numOf25s: 0,
     numOf50s: 0,
     numOf100s: 0
   }
+  var twentyFives = cashInRegister.numOf25s;
+  var fifties = cashInRegister.numOf50s;
+  var hundreds = cashInRegister.numOf100s;
+  var doesItWork = '';
   for (var i = 0; i < peopleInLine.length; i++) {
     if (peopleInLine[i] === 25) {
-      cashInRegister.numOf25s += 1;
-      if (peopleInLine.numOf25s < 0 || peopleInLine.numOf50s < 0 || peopleInLine.numOf100s < 0) {
-      return "NO";
-      }
+      twentyFives += 1;
+      if (twentyFives < 0 || fifties < 0 || hundreds < 0) {
+        return doesItWork = "NO";
+        break;
+      } else if (twentyFives >= 0 && fifties >= 0 && hundreds >= 0) {
+        return doesItWork = "YES";
+      }  
     } else if (peopleInLine[i] === 50) {
-      cashInRegister.numOf50s += 1;
-      cashInRegister.numOf25s -= 1;
-      if (peopleInLine.numOf25s < 0 || peopleInLine.numOf50s < 0 || peopleInLine.numOf100s < 0) {
-        return "NO";
-      }  
+      fifties += 1;
+      twentyFives -= 1;
+      if (twentyFives < 0 || fifties < 0 || hundreds < 0) {
+        return doesItWork = "NO";
+        break;
+      } else if (twentyFives >= 0 && fifties >= 0 && hundreds >= 0) {
+        return doesItWork = "YES";
+      }   
     } else if (peopleInLine[i] === 100) {
-      cashInRegister.numOf100s += 1;
-      cashInRegister.numOf50s -= 1;
-      cashInRegister.numOf25s -= 1;
-      if (peopleInLine.numOf25s < 0 || peopleInLine.numOf50s < 0 || peopleInLine.numOf100s < 0) {
-        return "NO";
-      }  
-    } else {
-      return "YES"
-    }
+      hundreds += 1;
+      fifties -= 1;
+      twentyFives -= 1;
+      if (twentyFives < 0 || fifties < 0 || hundreds < 0) {
+        return doesItWork = "NO";
+        break;
+      } else if (twentyFives >= 0 && fifties >= 0 && hundreds >= 0) {
+        return doesItWork = "YES";
+      } 
+    }    
   }
 }
