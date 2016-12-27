@@ -95,17 +95,10 @@ function tribonacci(signature,n){
     tribonacciSequence.push(sumPreviousThreeNums);
     }
     return tribonacciSequence;
-  } else if (n === 3) {
-      tribonacciSequence.push (signature[0], signature[1], signature[2]);
-      return tribonacciSequence;      
-  } else if (n === 2) {
-      tribonacciSequence.push (signature[0], signature[1]);
-      return tribonacciSequence;      
-  } else if (n === 1) {
-      tribonacciSequence.push(signature[0]);
+  } else if (n <= 3) {
+      for (var i = 0; i <= n-1; i++) {
+      tribonacciSequence.push(signature[i]);
+      }
       return tribonacciSequence;
-  } else if (n === 0) {
-      tribonacciSequence = [];
-      return tribonacciSequence;
-  }
-  };
+    }
+};  
