@@ -102,3 +102,55 @@ function tribonacci(signature,n){
       return tribonacciSequence;
     }
 };  
+_________________________________
+/*In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+
+Example
+
+filter_list([1,2,'a','b']) == [1,2]
+filter_list([1,'a','b',0,15]) == [1,0,15]
+filter_list([1,2,'aasf','1','123',123]) == [1,2,123]*/
+
+function filter_list(l) {
+var nums = [];
+var strings = [];
+  for (var i = 0; i < l.length; i++) {
+    if (typeof l[i] === "number") {
+    nums.push (l[i]);
+    } else if (typeof l[i]) {
+    strings.push (l[i]);
+    }
+  }
+  return nums;
+}
+
+__________________________________________
+/*You like building blocks. You especially like building blocks that are squares. And what you even like more, is to arrange them into a square of square building blocks!
+
+However, sometimes, you can't arrange them into a square. Instead, you end up with an ordinary rectangle! Those blasted things! If you just had a way to know, whether you're currently working in vain… Wait! That's it! You just have to check if your number of building blocks is a perfect square.
+
+Task
+
+Given an integral number, determine if it's a square number:
+
+In mathematics, a square number or perfect square is an integer that is the square of an integer; in other words, it is the product of some integer with itself.
+The tests will always use some integral number, so don't worry about that in dynamic typed languages.
+
+Examples
+
+isSquare(-1) // => false
+isSquare( 3) // => false
+isSquare( 4) // => true
+isSquare(25) // => true
+isSquare(26) // => false */
+
+var isSquare = function(n){
+  var  x = Math.sqrt (n);
+    if (n < 0) {
+      return false;
+    } else if (Math.abs(Math.floor(x) - x) > 0) {
+      return false;
+    } else if (Math.abs(Math.floor(x)) === x) {
+      return true;
+    }
+};
